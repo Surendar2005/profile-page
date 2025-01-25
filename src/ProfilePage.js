@@ -5,7 +5,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState({
     name: '',
     email: '',
-    avatar: '/avatar.png', 
+    avatar: '/20240927_105822.jpg', 
   });
 
   const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ const ProfilePage = () => {
           setUser({
             name: 'Surendar',
             email: 'surendar@example.com',
-            avatar: '/avatar.png', 
+            avatar: '/20240927_105822.jpg', 
           });
         }, 1000);
       } catch (err) {
