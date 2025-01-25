@@ -1,0 +1,96 @@
+import React, { useState, useEffect } from 'react';
+import { Formik, Form, Field } from 'formik';
+import './ProfilePage.css'; 
+const ProfilePage = () => {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    avatar: '/avatar.png', 
+  });
+
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setTimeout(() => {
+          setUser({
+            name: 'Surendar',
+            email: 'surendar@example.com',
+            avatar: '/avatar.png', 
+          });
+        }, 1000);
+      } catch (err) {
+        setError('Failed to fetch user data.');
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    
+    setUser({
+      ...user,
+      name: values.name,
+      email: values.email,
+    });
+    setSubmitting(false);
+  };
+
+  if (error) return <div className="error">{error}</div>; 
+  if (!user) return <div className="loading">Loading...</div>; 
+  return (
+    <div className="profile-page">
+      <h1>Profile Page</h1>
+      <div className="profile-info">
+        <div className="avatar">
+          {user.avatar ? (
+            <img src={user.avatar} alt="Avatar" />
+          ) : (
+            <div className="avatar-placeholder">
+              {user.name ? user.name[0].toUpperCase() : '?'}
+            </div>
+          )}
+        </div>
+
+        <h2>{user.name || 'Your Name'}</h2>
+        <p>{user.email || 'Your Email'}</p>
+        <Formik
+          enableReinitialize={true} 
+          initialValues={{ name: user.name, email: user.email }}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <Field
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <Field
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  className="form-control"
+                />
+              </div>
+              <button type="submit" disabled={isSubmitting} className="btn">
+                Update
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
+    </div>
+  );
+};
+
+export default ProfilePage;
