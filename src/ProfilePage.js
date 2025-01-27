@@ -28,9 +28,6 @@ const ProfilePage = () => {
     }, 1000);
 }, []);
 
-    fetchData();
-  }, []);
-
   const handleSubmit = (values, { setSubmitting }) => {
     
     setUser({
