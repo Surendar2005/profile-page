@@ -22,7 +22,7 @@ const ProfilePage = () => {
             setUser({
                 name: '',
                 email: '',
-                avatar: '/avatar.png', // Assuming the avatar.png is in the public folder
+                avatar: '/20240927_105822.jpg', // Assuming the avatar.png is in the public folder
             });
         }
     }, 1000);
