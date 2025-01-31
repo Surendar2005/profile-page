@@ -5,7 +5,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState({
     name: '',
     email: '',
-    avatar: '/20240927_105822.jpg', 
+    avatar: '/avatar.png', 
   });
 
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ const ProfilePage = () => {
             setUser({
                 name: '',
                 email: '',
-                avatar: '/20240927_105822.jpg', // Assuming the avatar.png is in the public folder
+                avatar: '/avatar.png', // Assuming the avatar.png is in the public folder
             });
         }
     }, 1000);
